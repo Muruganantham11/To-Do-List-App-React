@@ -43,7 +43,6 @@ const ToDoApp = () => {
       task.id === id ? { ...task, isEditing: !task.isEditing } : task
     );
     setTasks(listItems);
-    console.log(listItems);
   };
 
   const handleEditTask = (editValue, id) => {
