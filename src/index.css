@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@layer components {
+  .click-btn {
+    @apply bg-amber-600;
+  }
+}
+* {
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
