@@ -30,6 +30,7 @@ const ToDoApp = () => {
       task.id === id ? { ...task, checked: !task.checked } : task
     );
     setTasks(listItems);
+    console.log(id);
   };
 
   const handleDelete = (id) => {
