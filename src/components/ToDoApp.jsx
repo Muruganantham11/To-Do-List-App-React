@@ -35,7 +35,6 @@ const ToDoApp = () => {
   const handleDelete = (id) => {
     const listsItems = tasks.filter((task) => task.id !== id);
     setTasks(listsItems);
-    console.log(id);
   };
 
   const handleEdit = (id) => {
