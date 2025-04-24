@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import AddTask from "./AddTask";
 import Content from "./Content";
@@ -9,16 +9,15 @@ const ToDoApp = () => {
   const [displayValue, setDisplayValue] = useState(0);
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
-  const [searchTask,setSearchTask]=useState("")
+  const [searchTask, setSearchTask] = useState("");
   const [searchResults, SetSearchResults] = useState([]);
 
   useEffect(() => {
-    const filteredResult = tasks.filter(
-     (task) =>
+    const filteredResult = tasks.filter((task) =>
       task.task.toLocaleLowerCase().includes(searchTask.toLocaleLowerCase())
     );
     SetSearchResults(filteredResult);
-  }, [tasks,searchTask]);
+  }, [tasks, searchTask]);
 
   const handleSubmit = (e) => {
     setDisplayValue(1);
@@ -47,6 +46,9 @@ const ToDoApp = () => {
   const handleDelete = (id) => {
     const listsItems = tasks.filter((task) => task.id !== id);
     setTasks(listsItems);
+    if (tasks.length === 1) {
+      setDisplayValue(0);
+    }
   };
 
   const handleEdit = (id) => {
@@ -73,7 +75,7 @@ const ToDoApp = () => {
         newTask={newTask}
         setNewTask={setNewTask}
       />
-      <SearchTask setSearchTask={setSearchTask} SearchTask={searchTask}/> 
+      <SearchTask setSearchTask={setSearchTask} SearchTask={searchTask} />
 
       {displayValue === 0 ? (
         <p className="mt-12 text-xl tracking-wide">
