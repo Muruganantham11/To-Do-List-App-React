@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import Header from "./Header";
 import AddTask from "./AddTask";
 import Content from "./Content";
 import EditTask from "./EditTask";
+import SearchTask from "./SearchTask";
 
 const ToDoApp = () => {
   const [displayValue, setDisplayValue] = useState(0);
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
+  const [searchTask,setSearchTask]=useState("")
+  const [searchResults, SetSearchResults] = useState([]);
+
+  useEffect(() => {
+    const filteredResult = tasks.filter(
+     (task) =>
+      task.task.toLocaleLowerCase().includes(searchTask.toLocaleLowerCase())
+    );
+    SetSearchResults(filteredResult);
+  }, [tasks,searchTask]);
 
   const handleSubmit = (e) => {
     setDisplayValue(1);
@@ -55,13 +66,14 @@ const ToDoApp = () => {
   };
 
   return (
-    <div className="bg-gray-300 w-130 min-h-100 rounded-2xl  text-center mx-auto mt-7 p-4 ">
+    <div className="bg-gray-300 w-130 min-h-120 rounded-2xl  text-center mx-auto mt-7 p-4 ">
       <Header title="Get Things Done" />
       <AddTask
         handleSubmit={handleSubmit}
         newTask={newTask}
         setNewTask={setNewTask}
       />
+      <SearchTask setSearchTask={setSearchTask} SearchTask={searchTask}/> 
 
       {displayValue === 0 ? (
         <p className="mt-12 text-xl tracking-wide">
@@ -69,7 +81,7 @@ const ToDoApp = () => {
         </p>
       ) : null}
 
-      {tasks.map((task) =>
+      {searchResults.map((task) =>
         task.isEditing === true && task.checked === false ? (
           <EditTask task={task} key={task.id} handleEditTask={handleEditTask} />
         ) : (
