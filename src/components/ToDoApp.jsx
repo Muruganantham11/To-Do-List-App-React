@@ -68,8 +68,8 @@ const ToDoApp = () => {
   };
 
   return (
-    <div className="bg-gray-300 w-130 min-h-120 rounded-2xl  text-center mx-auto mt-7 p-4 ">
-      <Header title="Get Things Done" />
+    <div className="bg-gray-300 w-130 min-h-120 rounded-2xl  text-center mx-auto mt-7 ">
+      <Header title="Get Things Done!" />
       <AddTask
         handleSubmit={handleSubmit}
         newTask={newTask}
