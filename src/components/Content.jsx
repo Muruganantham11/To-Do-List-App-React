@@ -3,7 +3,7 @@ import { FaPenToSquare, FaTrashCan } from "react-icons/fa6";
 
 const Content = ({ task, handleCheck, handleDelete, handleEdit }) => {
   return (
-    <div className=" mt-7 bg-slate-500 p-3 rounded-xl mb-7 relative">
+    <div className=" mt-7 bg-slate-500 p-3 mx-4 rounded-xl my-2 relative">
       <ul>
         <li className="flex items-center" key={task.id}>
           <input
